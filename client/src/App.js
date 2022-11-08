@@ -51,12 +51,25 @@ function App() {
       });
   };
 
+  const testbtnD = () => {
+    axios
+      .get("api/gogog")
+      .then((res) => {
+        console.log("d", res);
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <h1>{data}</h1>
       <button onClick={testbtnA}>a요청!</button>
       <button onClick={testbtnB}>b요청!</button>
       <button onClick={testbtnC}>c요청!</button>
+      <button onClick={testbtnD}>d요청!</button>
     </div>
   );
 }

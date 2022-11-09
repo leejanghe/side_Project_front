@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import GlobalApiService from "./services/globalApi/api";
 
 function App() {
   const [data, setData] = useState("전송실패");
@@ -15,52 +16,71 @@ function App() {
   //     });
   // }, []);
 
-  const testbtnA = () => {
-    axios
-      .get("api/pet")
-      .then((res) => {
-        console.log("a", res);
-        setData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  // const testbtnA = () => {
+  //   axios
+  //     .get("api/pet")
+  //     .then((res) => {
+  //       console.log("a", res);
+  //       setData(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+  // const testbtnB = () => {
+  //   axios
+  //     .get("api/hello")
+  //     .then((res) => {
+  //       console.log("b", res);
+  //       setData(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+  // const testbtnC = () => {
+  //   axios
+  //     .get("api/bye")
+  //     .then((res) => {
+  //       console.log("c", res);
+  //       setData(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+  // const testbtnD = () => {
+  //   axios
+  //     .get("api/gogog")
+  //     .then((res) => {
+  //       console.log("d", res);
+  //       setData(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+  const testbtnA = async () => {
+    const res = await GlobalApiService.getPet();
+    setData(res);
   };
 
-  const testbtnB = () => {
-    axios
-      .get("api/hello")
-      .then((res) => {
-        console.log("b", res);
-        setData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const testbtnB = async () => {
+    const res = await GlobalApiService.getHello();
+    setData(res);
   };
 
-  const testbtnC = () => {
-    axios
-      .get("api/bye")
-      .then((res) => {
-        console.log("c", res);
-        setData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const testbtnC = async () => {
+    const res = await GlobalApiService.getBye();
+    setData(res);
   };
 
-  const testbtnD = () => {
-    axios
-      .get("api/gogog")
-      .then((res) => {
-        console.log("d", res);
-        setData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const testbtnD = async () => {
+    const res = await GlobalApiService.getGogog();
+    setData(res);
   };
 
   return (

@@ -84,20 +84,16 @@ function App() {
     setData(res);
   };
 
-  const postbtn = () => {
-    axios
-      .post("api/post", {
-        name: "testName",
-        age: 20,
-      })
-      .then((res) => {
-        console.log(res.data);
-        setAge(res.data.age);
-        setName(res.data.name);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const postbtn = async () => {
+    const data = {
+      name: "testName",
+      age: "30",
+    };
+
+    const res = await GlobalApiService.getPostData(data);
+    setName(res.name);
+    setAge(res.age);
+    console.log(res);
   };
 
   return (

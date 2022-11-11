@@ -21,6 +21,11 @@ const GlobalApiService = {
     console.log("4", res);
     return res.data;
   },
+  getPostData: async (data) => {
+    const res = await axios.post("api/post", data);
+    console.log("5", res);
+    return res.data;
+  },
 };
 
 export default GlobalApiService;

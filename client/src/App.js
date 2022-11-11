@@ -4,7 +4,8 @@ import GlobalApiService from "./services/globalApi/api";
 
 function App() {
   const [data, setData] = useState("전송실패");
-
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
   // useEffect(() => {
   //   axios
   //     .get("http://localhost:8080/api/hello")
@@ -83,9 +84,28 @@ function App() {
     setData(res);
   };
 
+  const postbtn = () => {
+    axios
+      .post("api/post", {
+        name: "testName",
+        age: 20,
+      })
+      .then((res) => {
+        console.log(res.data);
+        setAge(res.data.age);
+        setName(res.data.name);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <h1>{data}</h1>
+      <p>이름은 : {name}</p>
+      <p>나이는 : {age}</p>
+      <input type="button" value="post요청" onClick={postbtn} />
       <button onClick={testbtnA}>a요청!</button>
       <button onClick={testbtnB}>b요청!</button>
       <button onClick={testbtnC}>c요청!</button>
